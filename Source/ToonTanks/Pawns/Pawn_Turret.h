@@ -15,13 +15,16 @@ class TOONTANKS_API APawn_Turret : public ABase_Pawn
 	GENERATED_BODY()
 
 private:
+	UPROPERTY(EditAnywhere,BlueprintReadWrite, Category="Combat", meta=(AllowPrivateAccess="true"))
+	float Fire_Rate = 2.f;
 
 	void CheckFireCondition();
+
+	FTimerHandle Fire_Rate_Timer_Handle;
 
 public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
-	FTimerHandle Fire_Rate_Timer_Handle;
 
 protected:
 	// Called when the game starts or when spawned
