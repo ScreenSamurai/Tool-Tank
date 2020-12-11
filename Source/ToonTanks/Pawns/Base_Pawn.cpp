@@ -23,4 +23,37 @@ ABase_Pawn::ABase_Pawn()
 	ProjectileSpawnPoint->SetupAttachment(TurreMash);
 }
 
+void ABase_Pawn::Rotated_Turret(FVector Look_at_Target)
+{
+
+	// Update TurretMesh rotation to face towards the LookAtTarget passed in from Child Classes.
+	// TurretMesh->SetWorldRotation()...
+	FVector Look_at_Target_Cleaned = FVector(Look_at_Target.X, Look_at_Target.Y, TurreMash->GetComponentLocation().Z);
+	FVector Start_Location = TurreMash->GetComponentLocation();
+
+	FRotator Turret_Location = FVector(Look_at_Target_Cleaned - Start_Location).Rotation();
+	TurreMash->SetWorldRotation(Turret_Location);
+}
+
+void ABase_Pawn::Fire()
+{
+
+	// Get ProjectileSpawnPoint Location && Rotation -> Spawn Projectile class at Location firing towards Rotation.
+
+}
+
+void ABase_Pawn::HandleDistruction()
+{
+
+	// --- Universal functionality --- 
+	// Play death effects particle, sound and camera shake. 
+
+	// --- Then do Child overrides ---
+	// -- PawnTurret - Inform GameMode Turret died -> Then Destroy() self. 
+
+	// -- PawnTank - Inform GameMode Player died -> Then Hide() all components && stop movement input.
+
+
+}
+
 

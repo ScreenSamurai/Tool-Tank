@@ -20,7 +20,9 @@ void APawn_Tank::BeginPlay()
 {
 	Super::BeginPlay();
 
+	Player_Controller_Refl = Cast<APlayerController>(GetController());
 }
+
 
 // Called every frame
 void APawn_Tank::Tick(float DeltaTime)
@@ -29,6 +31,15 @@ void APawn_Tank::Tick(float DeltaTime)
 
 	Rotate();
 	Move();
+
+	if (Player_Controller_Refl)
+	{
+		FHitResult Trace_Hit_Result;
+		Player_Controller_Refl->GetHitResultUnderCursor(ECC_Visibility,false,Trace_Hit_Result);
+		FVector HitLocation = Trace_Hit_Result.ImpactPoint;
+
+		Rotated_Turret(HitLocation);
+	}
 }
 
 // Called to bind functionality to input
@@ -37,6 +48,10 @@ void APawn_Tank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 	PlayerInputComponent->BindAxis("MoveForward", this, &APawn_Tank::Calculate_Move_Input);
 	PlayerInputComponent->BindAxis("Turn", this, &APawn_Tank::Calculate_Rotate_Input);
+	PlayerInputComponent->BindAction("Fire",IE_Pressed,this, &APawn_Tank::Fire);
+
+	/*PlayerInputComponent->BindAction("Crouch",IE_Pressed,this, &APawn_Tank::BeginCrouch );
+	PlayerInputComponent->BindAction("Crouch", IE_Released,this, &APawn_Tank::LeaveCrouch );*/
 }
 
 
@@ -61,4 +76,10 @@ void APawn_Tank::Move()
 void APawn_Tank::Rotate()
 {
 	AddActorLocalRotation(Rotetion_Derection,true);
+}
+
+void APawn_Tank::HandleDistruction()
+{
+	Super::HandleDistruction();
+
 }

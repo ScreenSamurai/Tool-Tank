@@ -23,9 +23,11 @@ private:
 	FQuat Rotetion_Derection;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Movement", meta = (AllowPrivateAccess = "true"))
-	float Move_Speed = 200.f;
+		float Move_Speed = 200.f;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Movement", meta = (AllowPrivateAccess = "true"))
-	float Rotate_Speed = 100.f;
+		float Rotate_Speed = 100.f;
+
+	APlayerController* Player_Controller_Refl;
 
 	void Calculate_Move_Input(float Value);
 	void Calculate_Rotate_Input(float Value);
@@ -36,7 +38,7 @@ private:
 public:
 
 	APawn_Tank();
-	
+
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
@@ -46,4 +48,6 @@ public:
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+
+	virtual void HandleDistruction() override;
 };
