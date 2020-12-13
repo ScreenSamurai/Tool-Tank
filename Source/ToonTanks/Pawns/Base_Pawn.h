@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Pawn.h"
+#include "ToonTanks/Actor/Projectile_Base.h"
 #include "Base_Pawn.generated.h"
 
 class UCapsuleComponent;
@@ -14,6 +15,7 @@ class TOONTANKS_API ABase_Pawn : public APawn
 	GENERATED_BODY()
 
 private:
+	//Componets
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
 		UCapsuleComponent* CapsuleComp;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
@@ -22,6 +24,9 @@ private:
 		UStaticMeshComponent* TurreMash;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
 		USceneComponent* ProjectileSpawnPoint;
+	//Varibles
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category= "Projectile", meta=(AllowPrivateAccess = "True"))
+	TSubclassOf<AProjectile_Base> Projectile_Class;
 
 public:
 	// Sets default values for this pawn's properties
