@@ -14,13 +14,16 @@ class TOONTANKS_API AProjectile_Base : public AActor
 	GENERATED_BODY()
 	
 private:
+	UFUNCTION()
+	void OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent, FVector NormalImpulse, const FHitResult& Hit);
+
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
 	UProjectileMovementComponent* Projectile_Movement;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
 	UStaticMeshComponent* Projectile_Mash;
 	UPROPERTY(EditDefaultsOnly, Category = "Damage")
-	TSubclassOf<UDamageType> Dame_Type;
+	TSubclassOf<UDamageType> Damage_Type;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Move", meta = (AllowPrivateAccess = "true"))
 	float Movement_Speed = 1300.f;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Damage", meta = (AllowPrivateAccess = "true"))
@@ -36,6 +39,4 @@ public:
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
-
-
 };

@@ -18,5 +18,6 @@ void ATank_Game_Mode_Base::HandlGameOver(bool PlayerWon)
 
 void ATank_Game_Mode_Base::Actor_Died(AActor* DeadActor)
 {
+	UE_LOG(LogTemp, Warning, TEXT("A Pawn Died!"));
 }
 
