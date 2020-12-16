@@ -34,13 +34,13 @@ void UHealth_Component::Take_Damage(AActor* DamageActor, float Damage, const UDa
 		return;
 	}
 
-	Health = FMath::Clamp(Health-Damage,0.0f,Default_Health);
+	Health = FMath::Clamp(Health - Damage,0.0f,Default_Health);
 
 	if (Health <=0)
 	{
 		if (Game_Mode_Ref)
 		{
-			Game_Mode_Ref->Actor_Died(GetOwner());
+			Game_Mode_Ref->Actor_Dead(GetOwner());
 		}
 		else
 		{

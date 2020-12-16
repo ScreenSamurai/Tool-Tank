@@ -31,7 +31,6 @@ void AProjectile_Base::BeginPlay()
 
 void AProjectile_Base::OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent, FVector NormalImpulse, const FHitResult& Hit)
 {
-	UE_LOG(LogTemp, Warning, TEXT("OnHit Called!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"));
 	// Try to get a reference to the owning class.
 	AActor* MyOwner = GetOwner();
 	// If for some reason we can't get a valid reference, return as we need to check against the owner. 

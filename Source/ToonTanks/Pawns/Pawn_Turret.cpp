@@ -53,5 +53,5 @@ void APawn_Turret::HandleDistruction()
 {
 	Super::HandleDistruction();
 
-
+	Destroy();
 }

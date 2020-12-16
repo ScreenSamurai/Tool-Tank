@@ -32,11 +32,12 @@ public:
 	// Sets default values for this pawn's properties
 	ABase_Pawn();
 
+	virtual void HandleDistruction(); 
+
 protected:
 
 	void Rotated_Turret(FVector Look_at_Target);
 
 	void Fire();
 
-	virtual void HandleDistruction(); 
 };

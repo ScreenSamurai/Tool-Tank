@@ -81,5 +81,6 @@ void APawn_Tank::Rotate()
 void APawn_Tank::HandleDistruction()
 {
 	Super::HandleDistruction();
+	//Destroy();
 
 }
